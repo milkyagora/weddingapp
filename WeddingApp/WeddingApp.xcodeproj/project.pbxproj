@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842314942281536F006D65FB /* RSVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842314932281536F006D65FB /* RSVPViewController.swift */; };
+		842314962281538A006D65FB /* AddGuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842314952281538A006D65FB /* AddGuestViewController.swift */; };
 		84D77459228146260052627B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D77458228146260052627B /* AppDelegate.swift */; };
-		84D7745B228146260052627B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7745A228146260052627B /* ViewController.swift */; };
 		84D7745E228146260052627B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D7745C228146260052627B /* Main.storyboard */; };
 		84D77461228146260052627B /* WeddingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84D7745F228146260052627B /* WeddingApp.xcdatamodeld */; };
 		84D77463228146280052627B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D77462228146280052627B /* Assets.xcassets */; };
 		84D77466228146280052627B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D77464228146280052627B /* LaunchScreen.storyboard */; };
 		84D77471228146280052627B /* WeddingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D77470228146280052627B /* WeddingAppTests.swift */; };
 		84D7747C228146280052627B /* WeddingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7747B228146280052627B /* WeddingAppUITests.swift */; };
+		84D7748B228151CA0052627B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7748A228151CA0052627B /* InitialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		842314932281536F006D65FB /* RSVPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPViewController.swift; sourceTree = "<group>"; };
+		842314952281538A006D65FB /* AddGuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGuestViewController.swift; sourceTree = "<group>"; };
 		84D77455228146250052627B /* WeddingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeddingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D77458228146260052627B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		84D7745A228146260052627B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		84D7745D228146260052627B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84D77460228146260052627B /* WeddingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeddingApp.xcdatamodel; sourceTree = "<group>"; };
 		84D77462228146280052627B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		84D77477228146280052627B /* WeddingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeddingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D7747B228146280052627B /* WeddingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingAppUITests.swift; sourceTree = "<group>"; };
 		84D7747D228146280052627B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84D7748A228151CA0052627B /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +103,8 @@
 		84D77457228146250052627B /* WeddingApp */ = {
 			isa = PBXGroup;
 			children = (
+				84D77489228151B20052627B /* controller */,
 				84D77458228146260052627B /* AppDelegate.swift */,
-				84D7745A228146260052627B /* ViewController.swift */,
 				84D7745C228146260052627B /* Main.storyboard */,
 				84D77462228146280052627B /* Assets.xcassets */,
 				84D77464228146280052627B /* LaunchScreen.storyboard */,
@@ -126,6 +130,16 @@
 				84D7747D228146280052627B /* Info.plist */,
 			);
 			path = WeddingAppUITests;
+			sourceTree = "<group>";
+		};
+		84D77489228151B20052627B /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				84D7748A228151CA0052627B /* InitialViewController.swift */,
+				842314932281536F006D65FB /* RSVPViewController.swift */,
+				842314952281538A006D65FB /* AddGuestViewController.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D7745B228146260052627B /* ViewController.swift in Sources */,
+				84D7748B228151CA0052627B /* InitialViewController.swift in Sources */,
+				842314962281538A006D65FB /* AddGuestViewController.swift in Sources */,
+				842314942281536F006D65FB /* RSVPViewController.swift in Sources */,
 				84D77461228146260052627B /* WeddingApp.xcdatamodeld in Sources */,
 				84D77459228146260052627B /* AppDelegate.swift in Sources */,
 			);

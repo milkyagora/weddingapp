@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RSVPViewController.swift
 //  WeddingApp
 //
 //  Created by Milky Joy Agora on 07/05/2019.
@@ -8,18 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RSVPViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
-
+    @IBAction func addGuest(_ sender: Any) {
+        self.performSegue(withIdentifier: "addGuest", sender: self)
+    }
+    
 }
-
