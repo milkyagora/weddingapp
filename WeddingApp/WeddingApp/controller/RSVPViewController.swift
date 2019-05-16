@@ -12,9 +12,12 @@ import CoreData
 
 class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     
+    @IBOutlet var counter: UILabel!
     var resultSearchController = UISearchController()
     var tableArray = [NSManagedObject]()
     var filteredTableData = [String]()
+    var totalCount = Int()
+    var guestCount = Int()
     
     @IBOutlet var tableView: ExpyTableView!
     override func viewDidLoad() {
@@ -23,6 +26,20 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+        
+        fetchData()
+       
+        for case let i as Table in tableArray{
+            totalCount += (i.guests?.count)!
+            
+            for case let j as Guest in i.guests!{
+                if (j.hasArrived){
+                    guestCount += 1
+                }
+            }
+        }
+        
+        counter.text = "\(guestCount)/\(totalCount)"
         
         
         resultSearchController = ({

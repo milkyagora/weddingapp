@@ -285,6 +285,7 @@
                         <viewLayoutGuide key="safeArea" id="cOw-8C-t5P"/>
                     </view>
                     <connections>
+                        <outlet property="counter" destination="qWG-65-Hrk" id="aNk-49-k8z"/>
                         <outlet property="searchDisplayController" destination="d15-K2-sFw" id="IM8-gg-G24"/>
                         <outlet property="tableView" destination="yyk-nV-3HH" id="yQh-cq-ONa"/>
                         <segue destination="xwL-B0-tLM" kind="show" identifier="addGuest" id="gLS-Gi-ixb"/>
@@ -487,6 +488,6 @@
         <image name="plusIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JUY-pt-NDl"/>
+        <segue reference="gLS-Gi-ixb"/>
     </inferredMetricsTieBreakers>
 </document>
