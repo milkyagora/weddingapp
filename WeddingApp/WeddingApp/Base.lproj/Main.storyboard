@@ -115,6 +115,9 @@
                                 <rect key="frame" x="50" y="471" width="1012" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="SAVE"/>
+                                <connections>
+                                    <action selector="saveGuest:" destination="xwL-B0-tLM" eventType="touchUpInside" id="Quc-3X-ceQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

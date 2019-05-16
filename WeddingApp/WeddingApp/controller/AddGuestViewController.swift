@@ -18,6 +18,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
      var dropdownData = [String]()
     var dropdownId = [Int]()
     var selectedTable = Table()
+    let nc = NotificationCenter.default
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         tableDropdown.selectedRowColor = UIColor.lightGray
         tableDropdown.didSelect{(selectedText , index ,id) in
             self.selectedTable = self.tableArray[id] as! Table
-            self.addGuest()
+            
         }
 
     }
@@ -102,11 +103,16 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
 
         do {
             try context.save()
-            self.dismissView()
+            self.nc.post(name: NSNotification.Name(rawValue: "refreshTable"), object: true)
+            _ = navigationController?.popViewController(animated: true)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
     
-
+    @IBAction func saveGuest(_ sender: Any) {
+        addGuest()
+    }
+    
+    
 }

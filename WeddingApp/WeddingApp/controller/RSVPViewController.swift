@@ -18,6 +18,7 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     var filteredTableData = [String]()
     var totalCount = Int()
     var guestCount = Int()
+    let nc = NotificationCenter.default
     
     @IBOutlet var tableView: ExpyTableView!
     override func viewDidLoad() {
@@ -28,18 +29,8 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
         tableView.tableFooterView = UIView()
         
         fetchData()
-       
-        for case let i as Table in tableArray{
-            totalCount += (i.guests?.count)!
-            
-            for case let j as Guest in i.guests!{
-                if (j.hasArrived){
-                    guestCount += 1
-                }
-            }
-        }
+        updateCounter()
         
-        counter.text = "\(guestCount)/\(totalCount)"
         
         
         resultSearchController = ({
@@ -57,6 +48,7 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        nc.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(rawValue: "refreshTable"), object: nil)
         fetchData()
         
     }
@@ -192,6 +184,29 @@ extension RSVPViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
+    
+    @objc func refreshTable(notification:NSNotification) {
+        fetchData()
+        tableView.reloadData()
+        updateCounter()
+    }
+    
+    func updateCounter(){
+        totalCount = 0
+        guestCount = 0
+        for case let i as Table in tableArray{
+            totalCount += (i.guests?.count)!
+            
+            for case let j as Guest in i.guests!{
+                if (j.hasArrived){
+                    guestCount += 1
+                }
+            }
+        }
+        
+        counter.text = "\(guestCount)/\(totalCount)"
+    }
+    
     
 }
 
