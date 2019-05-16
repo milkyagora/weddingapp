@@ -35,6 +35,10 @@ class InitialViewController: UIViewController {
         self.performSegue(withIdentifier: "goToRSVP", sender: self)
     }
     
+    @IBAction func addTable(_ sender: Any) {
+        self.performSegue(withIdentifier: "manageTables", sender: self)
+    }
+    
     @IBAction func addGuest(_ sender: Any) {
         self.performSegue(withIdentifier: "goToAddGuest", sender: self)
     }

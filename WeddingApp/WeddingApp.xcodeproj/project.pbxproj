@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02583E45D11FA4192E8591EE /* Pods_WeddingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC052C0CF9D17EB822B42E0 /* Pods_WeddingAppTests.framework */; };
+		7C1C02563D12168105012044 /* Pods_WeddingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7142F0D9CD10500F5EAE6F33 /* Pods_WeddingApp.framework */; };
 		842314942281536F006D65FB /* RSVPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842314932281536F006D65FB /* RSVPViewController.swift */; };
 		842314962281538A006D65FB /* AddGuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842314952281538A006D65FB /* AddGuestViewController.swift */; };
+		842314A7228C2CCE006D65FB /* RSVPHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842314A6228C2CCE006D65FB /* RSVPHeaderTableViewCell.swift */; };
+		842314A9228C2D3B006D65FB /* RSVPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842314A8228C2D3B006D65FB /* RSVPTableViewCell.swift */; };
+		84730FC9228D1E58006DDD9B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84730FC8228D1E58006DDD9B /* TableViewCell.swift */; };
+		84730FCB228D1F08006DDD9B /* ManageTablesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84730FCA228D1F08006DDD9B /* ManageTablesViewController.swift */; };
+		84730FCD228D20FD006DDD9B /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84730FCC228D20FD006DDD9B /* AddTableViewController.swift */; };
 		84D77459228146260052627B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D77458228146260052627B /* AppDelegate.swift */; };
 		84D7745E228146260052627B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D7745C228146260052627B /* Main.storyboard */; };
 		84D77461228146260052627B /* WeddingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84D7745F228146260052627B /* WeddingApp.xcdatamodeld */; };
@@ -17,6 +24,7 @@
 		84D77471228146280052627B /* WeddingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D77470228146280052627B /* WeddingAppTests.swift */; };
 		84D7747C228146280052627B /* WeddingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7747B228146280052627B /* WeddingAppUITests.swift */; };
 		84D7748B228151CA0052627B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7748A228151CA0052627B /* InitialViewController.swift */; };
+		E92FAC8C365C0B6C778DEAF9 /* Pods_WeddingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE3E1C7F20F57543D0073710 /* Pods_WeddingAppUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +45,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		044DAFC420ACD4BA00A3D67B /* Pods-WeddingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingApp/Pods-WeddingApp.release.xcconfig"; sourceTree = "<group>"; };
+		08ECBF6489641EDC7D950403 /* Pods-WeddingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingAppTests/Pods-WeddingAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		4B8F3838A16BB1E798D9E357 /* Pods-WeddingAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingAppUITests/Pods-WeddingAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5DC052C0CF9D17EB822B42E0 /* Pods_WeddingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeddingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7142F0D9CD10500F5EAE6F33 /* Pods_WeddingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeddingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7514E99AC8BE295D098CE5EA /* Pods-WeddingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingAppTests/Pods-WeddingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		80A70752B9895998F6AE6906 /* Pods-WeddingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingAppUITests/Pods-WeddingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		842314932281536F006D65FB /* RSVPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPViewController.swift; sourceTree = "<group>"; };
 		842314952281538A006D65FB /* AddGuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGuestViewController.swift; sourceTree = "<group>"; };
+		842314A6228C2CCE006D65FB /* RSVPHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		842314A8228C2D3B006D65FB /* RSVPTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPTableViewCell.swift; sourceTree = "<group>"; };
+		84730FC8228D1E58006DDD9B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		84730FCA228D1F08006DDD9B /* ManageTablesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageTablesViewController.swift; sourceTree = "<group>"; };
+		84730FCC228D20FD006DDD9B /* AddTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
 		84D77455228146250052627B /* WeddingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeddingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D77458228146260052627B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D7745D228146260052627B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,6 +73,8 @@
 		84D7747B228146280052627B /* WeddingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingAppUITests.swift; sourceTree = "<group>"; };
 		84D7747D228146280052627B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84D7748A228151CA0052627B /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		C18C177E8A6ADFFD6B91BD96 /* Pods-WeddingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeddingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeddingApp/Pods-WeddingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		DE3E1C7F20F57543D0073710 /* Pods_WeddingAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeddingAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C1C02563D12168105012044 /* Pods_WeddingApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02583E45D11FA4192E8591EE /* Pods_WeddingAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +98,53 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E92FAC8C365C0B6C778DEAF9 /* Pods_WeddingAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57AD7DECC659542E343B7E3A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C18C177E8A6ADFFD6B91BD96 /* Pods-WeddingApp.debug.xcconfig */,
+				044DAFC420ACD4BA00A3D67B /* Pods-WeddingApp.release.xcconfig */,
+				7514E99AC8BE295D098CE5EA /* Pods-WeddingAppTests.debug.xcconfig */,
+				08ECBF6489641EDC7D950403 /* Pods-WeddingAppTests.release.xcconfig */,
+				80A70752B9895998F6AE6906 /* Pods-WeddingAppUITests.debug.xcconfig */,
+				4B8F3838A16BB1E798D9E357 /* Pods-WeddingAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		63E353E95FB9CFDBB9D0D01F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7142F0D9CD10500F5EAE6F33 /* Pods_WeddingApp.framework */,
+				5DC052C0CF9D17EB822B42E0 /* Pods_WeddingAppTests.framework */,
+				DE3E1C7F20F57543D0073710 /* Pods_WeddingAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84231497228BE7F2006D65FB /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				842314A6228C2CCE006D65FB /* RSVPHeaderTableViewCell.swift */,
+				842314A8228C2D3B006D65FB /* RSVPTableViewCell.swift */,
+				84730FC8228D1E58006DDD9B /* TableViewCell.swift */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		8423149A228BEA7E006D65FB /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		84D7744C228146250052627B = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +152,8 @@
 				84D7746F228146280052627B /* WeddingAppTests */,
 				84D7747A228146280052627B /* WeddingAppUITests */,
 				84D77456228146250052627B /* Products */,
+				57AD7DECC659542E343B7E3A /* Pods */,
+				63E353E95FB9CFDBB9D0D01F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +170,8 @@
 		84D77457228146250052627B /* WeddingApp */ = {
 			isa = PBXGroup;
 			children = (
+				8423149A228BEA7E006D65FB /* model */,
+				84231497228BE7F2006D65FB /* cell */,
 				84D77489228151B20052627B /* controller */,
 				84D77458228146260052627B /* AppDelegate.swift */,
 				84D7745C228146260052627B /* Main.storyboard */,
@@ -138,6 +207,8 @@
 				84D7748A228151CA0052627B /* InitialViewController.swift */,
 				842314932281536F006D65FB /* RSVPViewController.swift */,
 				842314952281538A006D65FB /* AddGuestViewController.swift */,
+				84730FCA228D1F08006DDD9B /* ManageTablesViewController.swift */,
+				84730FCC228D20FD006DDD9B /* AddTableViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -149,9 +220,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84D77480228146280052627B /* Build configuration list for PBXNativeTarget "WeddingApp" */;
 			buildPhases = (
+				18D897154240E4CE9D25E8D8 /* [CP] Check Pods Manifest.lock */,
 				84D77451228146250052627B /* Sources */,
 				84D77452228146250052627B /* Frameworks */,
 				84D77453228146250052627B /* Resources */,
+				8DAC397696AC4069C57F49E3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,6 +239,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84D77483228146280052627B /* Build configuration list for PBXNativeTarget "WeddingAppTests" */;
 			buildPhases = (
+				DCD96C655B0A1DD1FCA6453D /* [CP] Check Pods Manifest.lock */,
 				84D77468228146280052627B /* Sources */,
 				84D77469228146280052627B /* Frameworks */,
 				84D7746A228146280052627B /* Resources */,
@@ -184,6 +258,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84D77486228146280052627B /* Build configuration list for PBXNativeTarget "WeddingAppUITests" */;
 			buildPhases = (
+				3F854B19B74D39FD9B49F6F4 /* [CP] Check Pods Manifest.lock */,
 				84D77473228146280052627B /* Sources */,
 				84D77474228146280052627B /* Frameworks */,
 				84D77475228146280052627B /* Resources */,
@@ -268,16 +343,98 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		18D897154240E4CE9D25E8D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeddingApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F854B19B74D39FD9B49F6F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeddingAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DAC397696AC4069C57F49E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WeddingApp/Pods-WeddingApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ExpyTableView/ExpyTableView.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpyTableView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeddingApp/Pods-WeddingApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DCD96C655B0A1DD1FCA6453D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeddingAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84D77451228146250052627B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842314A9228C2D3B006D65FB /* RSVPTableViewCell.swift in Sources */,
+				842314A7228C2CCE006D65FB /* RSVPHeaderTableViewCell.swift in Sources */,
+				84730FC9228D1E58006DDD9B /* TableViewCell.swift in Sources */,
 				84D7748B228151CA0052627B /* InitialViewController.swift in Sources */,
 				842314962281538A006D65FB /* AddGuestViewController.swift in Sources */,
+				84730FCB228D1F08006DDD9B /* ManageTablesViewController.swift in Sources */,
 				842314942281536F006D65FB /* RSVPViewController.swift in Sources */,
 				84D77461228146260052627B /* WeddingApp.xcdatamodeld in Sources */,
 				84D77459228146260052627B /* AppDelegate.swift in Sources */,
+				84730FCD228D20FD006DDD9B /* AddTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +605,7 @@
 		};
 		84D77481228146280052627B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C18C177E8A6ADFFD6B91BD96 /* Pods-WeddingApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -466,6 +624,7 @@
 		};
 		84D77482228146280052627B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 044DAFC420ACD4BA00A3D67B /* Pods-WeddingApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -484,6 +643,7 @@
 		};
 		84D77484228146280052627B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7514E99AC8BE295D098CE5EA /* Pods-WeddingAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -504,6 +664,7 @@
 		};
 		84D77485228146280052627B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08ECBF6489641EDC7D950403 /* Pods-WeddingAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -524,6 +685,7 @@
 		};
 		84D77487228146280052627B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80A70752B9895998F6AE6906 /* Pods-WeddingAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -543,6 +705,7 @@
 		};
 		84D77488228146280052627B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B8F3838A16BB1E798D9E357 /* Pods-WeddingAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
