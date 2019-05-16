@@ -1,0 +1,20 @@
+PODS:
+  - ExpyTableView (1.0)
+  - iOSDropDown (0.2.7)
+
+DEPENDENCIES:
+  - ExpyTableView
+  - iOSDropDown
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ExpyTableView
+    - iOSDropDown
+
+SPEC CHECKSUMS:
+  ExpyTableView: 75fe6494d4613fd3dc4bd965cce6e14cec7e2223
+  iOSDropDown: 7a4cfc67d5166f319858747b63cd2f7760c4fb4b
+
+PODFILE CHECKSUM: 10e931b1ce6820997603ed2af4089ce6d3e0fc8e
+
+COCOAPODS: 1.5.3

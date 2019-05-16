@@ -40,57 +40,10 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Table")
-        
-        //3
-        do {
-            tableArray = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-    }
-    
-    
-    
-    func save(){
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        let context = appDelegate.persistentContainer.viewContext
-        let table1 = Table(context: context)
-        table1.name = "Table 1"
-        table1.capacity = 10
-        
-        let guest1 = Guest(context: context)
-        guest1.name = "Milky Joy Agora"
-        guest1.hasArrived = false
-        guest1.table = table1
-        table1.addToGuests(guest1)
-        
-        let guest2 = Guest(context: context)
-        guest2.name = "Shakira"
-        guest2.hasArrived = true
-        table1.addToGuests(guest2)
-        
-        do {
-            try context.save()
-            //            tableArray.append(table)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+        fetchData()
         
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,8 +66,9 @@ extension RSVPViewController: ExpyTableViewDataSource {
     
     func tableView(_ tableView: ExpyTableView, expandableCellForSection section: Int) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! RSVPHeaderTableViewCell
-        cell.tableLabel.text = tableArray[section].value(forKeyPath: "name") as? String
-        cell.tableCounter.text = "0/\(tableArray[section].value(forKeyPath: "capacity")!)"
+        var rowTable = tableArray[section] as! Table
+        cell.tableLabel.text = rowTable.name
+        cell.tableCounter.text = "\(rowTable.guests!.count)/\(rowTable.capacity)"
         cell.layoutMargins = UIEdgeInsets.zero
         cell.showSeparator()
         return cell
@@ -129,12 +83,25 @@ extension RSVPViewController {
         print("DID SELECT row: \(indexPath.row), section: \(indexPath.section)")
         
         if indexPath.row > 0{
+            guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
+            }
+            let context = appDelegate.persistentContainer.viewContext
+            let guest = (tableArray[indexPath.section] as! Table).guests![indexPath.row-1] as! Guest
             let alert = UIAlertController(title: "Check-in Guest", message: "Do you want to check-in the guest?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
                 switch action.style{
                 case .default:
-                    print("default")
+                   guest.setValue(true, forKey: "hasArrived")
+                   do {
+                    try context.save()
+                    self.fetchData()
+                    tableView.reloadData()
+                   } catch let error as NSError {
+                    print("Could not save. \(error), \(error.userInfo)")
+                    }
                     
                 case .cancel:
                     print("cancel")
@@ -188,6 +155,25 @@ extension RSVPViewController {
         cell.layoutMargins = UIEdgeInsets.zero
         cell.hideSeparator()
         return cell
+    }
+    
+    func fetchData(){
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Table")
+        
+        do {
+            tableArray = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
 }
