@@ -15,6 +15,9 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var guestName: UITextField!
     @IBOutlet var tableDropdown: DropDown!
     @IBOutlet weak var saveBtn: UIButton!
+    @IBOutlet var statusDropdown: DropDown!
+    @IBOutlet var statusLabel: UILabel!
+    
     var tableArray = [NSManagedObject]()
      var dropdownData = [String]()
     var dropdownId = [Int]()

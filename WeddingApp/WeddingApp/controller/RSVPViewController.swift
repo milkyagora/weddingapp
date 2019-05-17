@@ -146,12 +146,17 @@ extension RSVPViewController {
 //MARK: UITableView Data Source Methods
 extension RSVPViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return tableArray.count
+        if  (resultSearchController.isActive) {
+            return filteredTableData.count
+        }
+        else{
+            return tableArray.count
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if  (resultSearchController.isActive) {
-            return filteredTableData.count
+            return (filteredTableData[section].guests?.count)! + 1
         }
         else{
             return ((tableArray[section] as! Table).guests?.count)! + 1
@@ -258,6 +263,17 @@ extension RSVPViewController: UISearchResultsUpdating {
 //            $0.rangeOfString(resultSearchController.searchBar.t, options: .CaseInsensitiveSearch) != nil
 //        }
 
+        for i in filteredArray{
+            for case let g as Guest in i.guests!{
+                if (g.name?.range(of: resultSearchController.searchBar.text!, options: .caseInsensitive) != nil){
+                    //var newTable = i.mutableCopy() as! Table
+                    //i.addToGuests(g)
+                    filteredTableData.append(i)
+                    break
+                }
+                
+            }
+        }
         
         self.tableView.reloadData()
     }
