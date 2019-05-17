@@ -281,23 +281,29 @@ extension RSVPViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filteredTableData.removeAll(keepingCapacity: false)
         var filteredArray = [Table]()
-        for case let i as Table in tableArray{
-            filteredArray.append(i)
-        }
+      
         
 //        filteredTableData = filteredArray.filter {
 //            $0.rangeOfString(resultSearchController.searchBar.t, options: .CaseInsensitiveSearch) != nil
 //        }
 
-        for i in filteredArray{
+        for case let i as Table in tableArray{
+            guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
+            }
+            let context = appDelegate.persistentContainer.viewContext
+            var newTable = Table(context: context)
+            newTable.setValue(i.name, forKeyPath: "name")
+           newTable.setValue(i.capacity, forKeyPath: "capacity")
             for case let g as Guest in i.guests!{
-                if (g.name?.range(of: resultSearchController.searchBar.text!, options: .caseInsensitive) != nil){
-                    //var newTable = i.mutableCopy() as! Table
-                    //i.addToGuests(g)
-                    filteredTableData.append(i)
-                    break
+                    if (g.name?.range(of: resultSearchController.searchBar.text!, options: .caseInsensitive) != nil){
+                     newTable.addToGuests(g)
                 }
                 
+            }
+            if (newTable.guests?.count)! > 0{
+                filteredTableData.append(newTable)
             }
         }
         

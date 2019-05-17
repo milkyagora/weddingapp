@@ -37,8 +37,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         updateDropdownData()
         tableDropdown.delegate = self
         
-        
-        
+       
         
         tableDropdown.rowHeight = 35
         tableDropdown.listHeight = 400
@@ -80,6 +79,8 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         
 
     }
+    
+    
     
     func updateDropdownData(){
         dropdownData.removeAll()
