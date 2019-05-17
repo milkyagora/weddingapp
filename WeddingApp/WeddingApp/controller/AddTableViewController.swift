@@ -14,6 +14,9 @@ class AddTableViewController: UIViewController {
     @IBOutlet var mainView: UIView!
     @IBOutlet var tableName: UITextField!
     @IBOutlet var capacity: UITextField!
+    @IBOutlet weak var saveBtn: UIButton!
+    
+    
     let nc = NotificationCenter.default
     var isEdit = false
     var table = NSManagedObject()
@@ -21,7 +24,7 @@ class AddTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        saveBtn.layer.cornerRadius = 5
         self.view.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         mainView.layer.cornerRadius = 15
         let dismissViewTap = UITapGestureRecognizer(target: self, action: #selector(dismissView))

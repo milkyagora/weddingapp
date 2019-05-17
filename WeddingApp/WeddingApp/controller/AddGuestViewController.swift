@@ -14,6 +14,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var guestName: UITextField!
     @IBOutlet var tableDropdown: DropDown!
+    @IBOutlet weak var saveBtn: UIButton!
     var tableArray = [NSManagedObject]()
      var dropdownData = [String]()
     var dropdownId = [Int]()
@@ -22,7 +23,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        saveBtn.layer.cornerRadius = 5
 //        let dismissViewTap = UITapGestureRecognizer(target: self, action: #selector(dismissView))
 //        view.addGestureRecognizer(dismissViewTap)
         
