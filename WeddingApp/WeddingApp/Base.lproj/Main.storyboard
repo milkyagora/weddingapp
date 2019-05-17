@@ -18,68 +18,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obJ-nY-6FM">
-                                <rect key="frame" x="100" y="778" width="634" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="STa-ef-JDQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="RSVP">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="rsvp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tw1-ti-qWn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Jg-pr-gg9">
-                                <rect key="frame" x="100" y="908" width="634" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.81960784310000001" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="MANAGE TABLES">
-                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="addTable:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k2q-ws-0PS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p41-3C-j8P">
-                                <rect key="frame" x="100" y="843" width="634" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="ADD GUEST">
-                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="addGuest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g48-t4-AYe"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Banner" translatesAutoresizingMaskIntoConstraints="NO" id="h1i-ZP-skc">
-                                <rect key="frame" x="0.0" y="134" width="834" height="624"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="624" id="Wka-KC-dvZ"/>
-                                </constraints>
+                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Banner" translatesAutoresizingMaskIntoConstraints="NO" id="h1i-ZP-skc">
+                                <rect key="frame" x="0.0" y="0.0" width="834" height="1174"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GlN-Mi-LHI">
+                                <rect key="frame" x="100" y="874" width="634" height="200"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obJ-nY-6FM">
+                                        <rect key="frame" x="0.0" y="0.0" width="634" height="50"/>
+                                        <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="STa-ef-JDQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="RSVP">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rsvp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tw1-ti-qWn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p41-3C-j8P">
+                                        <rect key="frame" x="0.0" y="60" width="634" height="50"/>
+                                        <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="ADD GUEST">
+                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addGuest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g48-t4-AYe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Jg-pr-gg9">
+                                        <rect key="frame" x="0.0" y="120" width="634" height="50"/>
+                                        <color key="backgroundColor" red="1" green="0.81960784310000001" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="MANAGE TABLES">
+                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addTable:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k2q-ws-0PS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="obJ-nY-6FM" firstAttribute="top" secondItem="GlN-Mi-LHI" secondAttribute="top" id="8Vj-MX-41O"/>
+                                    <constraint firstItem="p41-3C-j8P" firstAttribute="top" secondItem="obJ-nY-6FM" secondAttribute="bottom" constant="10" id="B4k-fH-dfl"/>
+                                    <constraint firstItem="4Jg-pr-gg9" firstAttribute="height" secondItem="obJ-nY-6FM" secondAttribute="height" id="Fuk-UP-gP9"/>
+                                    <constraint firstItem="4Jg-pr-gg9" firstAttribute="trailing" secondItem="obJ-nY-6FM" secondAttribute="trailing" id="GVl-VW-3el"/>
+                                    <constraint firstItem="4Jg-pr-gg9" firstAttribute="top" secondItem="p41-3C-j8P" secondAttribute="bottom" constant="10" id="IbH-BS-rda"/>
+                                    <constraint firstAttribute="trailing" secondItem="obJ-nY-6FM" secondAttribute="trailing" id="Jlr-e9-NXm"/>
+                                    <constraint firstItem="obJ-nY-6FM" firstAttribute="leading" secondItem="GlN-Mi-LHI" secondAttribute="leading" id="NcK-AH-cjF"/>
+                                    <constraint firstItem="p41-3C-j8P" firstAttribute="leading" secondItem="obJ-nY-6FM" secondAttribute="leading" id="k8a-F4-u8V"/>
+                                    <constraint firstItem="p41-3C-j8P" firstAttribute="height" secondItem="obJ-nY-6FM" secondAttribute="height" id="lja-OK-pDT"/>
+                                    <constraint firstItem="4Jg-pr-gg9" firstAttribute="leading" secondItem="obJ-nY-6FM" secondAttribute="leading" id="qhw-G7-Dw9"/>
+                                    <constraint firstAttribute="height" constant="200" id="y7a-ul-vrL"/>
+                                    <constraint firstItem="p41-3C-j8P" firstAttribute="trailing" secondItem="obJ-nY-6FM" secondAttribute="trailing" id="zjN-6d-lNH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="h1i-ZP-skc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0po-wy-20e"/>
-                            <constraint firstItem="obJ-nY-6FM" firstAttribute="top" secondItem="h1i-ZP-skc" secondAttribute="bottom" constant="20" id="209-0w-gvt"/>
-                            <constraint firstItem="obJ-nY-6FM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="26E-vz-eNL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="obJ-nY-6FM" secondAttribute="trailing" constant="100" id="A2c-nR-ab7"/>
-                            <constraint firstItem="obJ-nY-6FM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="Aan-Nh-MyO"/>
-                            <constraint firstItem="p41-3C-j8P" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="IXV-hZ-Kov"/>
-                            <constraint firstItem="4Jg-pr-gg9" firstAttribute="top" secondItem="p41-3C-j8P" secondAttribute="bottom" constant="15" id="L9k-Se-guZ"/>
                             <constraint firstItem="h1i-ZP-skc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PSe-p2-gIX"/>
-                            <constraint firstItem="p41-3C-j8P" firstAttribute="trailing" secondItem="obJ-nY-6FM" secondAttribute="trailing" id="RBY-bp-DTF"/>
-                            <constraint firstItem="4Jg-pr-gg9" firstAttribute="trailing" secondItem="p41-3C-j8P" secondAttribute="trailing" id="U0a-V7-1KN"/>
-                            <constraint firstItem="p41-3C-j8P" firstAttribute="height" secondItem="obJ-nY-6FM" secondAttribute="height" id="b43-jG-ehQ"/>
-                            <constraint firstItem="p41-3C-j8P" firstAttribute="top" secondItem="obJ-nY-6FM" secondAttribute="bottom" constant="15" id="gDq-8P-UvP"/>
-                            <constraint firstItem="4Jg-pr-gg9" firstAttribute="leading" secondItem="p41-3C-j8P" secondAttribute="leading" id="hgp-mX-ELk"/>
-                            <constraint firstItem="4Jg-pr-gg9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="kvH-wl-6xz"/>
-                            <constraint firstItem="h1i-ZP-skc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="lBp-PP-O16"/>
-                            <constraint firstItem="p41-3C-j8P" firstAttribute="leading" secondItem="obJ-nY-6FM" secondAttribute="leading" id="ldj-co-Yen"/>
-                            <constraint firstItem="4Jg-pr-gg9" firstAttribute="height" secondItem="p41-3C-j8P" secondAttribute="height" id="tVe-2z-KY7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GlN-Mi-LHI" secondAttribute="bottom" constant="100" id="V6b-S5-pvA"/>
+                            <constraint firstItem="GlN-Mi-LHI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="Y6G-C3-7mm"/>
+                            <constraint firstItem="h1i-ZP-skc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bgW-fl-rNO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GlN-Mi-LHI" secondAttribute="trailing" constant="100" id="j4Z-zP-hN7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="h1i-ZP-skc" secondAttribute="bottom" id="osS-Pe-9nd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -527,7 +534,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Banner" width="972" height="648"/>
+        <image name="Banner" width="648" height="972"/>
         <image name="arrowDownIcon" width="25" height="25"/>
         <image name="plusIcon" width="25" height="25"/>
     </resources>
