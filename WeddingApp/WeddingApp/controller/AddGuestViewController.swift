@@ -129,10 +129,16 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         do {
             try context.save()
             self.nc.post(name: NSNotification.Name(rawValue: "refreshTable"), object: true)
-//            _ = navigationController?.popViewController(animated: true)
-            guestName.text = ""
-            tableDropdown.text = ""
-            updateDropdownData()
+            if isEdit{
+                            _ = navigationController?.popViewController(animated: true)
+            }
+            else{
+                guestName.text = ""
+                tableDropdown.text = ""
+                updateDropdownData()
+            }
+
+            
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }

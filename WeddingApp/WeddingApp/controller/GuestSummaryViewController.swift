@@ -15,6 +15,7 @@ class GuestSummaryViewController: UIViewController, UITableViewDelegate, UITable
     var pendingGuestArray = [Guest]()
     var selectedGuest = NSManagedObject()
     var isEdit = false
+    let nc = NotificationCenter.default
 
     @IBOutlet var segmentedController: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
@@ -35,6 +36,7 @@ class GuestSummaryViewController: UIViewController, UITableViewDelegate, UITable
     
     
     override func viewWillAppear(_ animated: Bool) {
+         nc.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(rawValue: "refreshTable"), object: nil)
         fetchData()
         updateCounter()
     }
@@ -42,6 +44,12 @@ class GuestSummaryViewController: UIViewController, UITableViewDelegate, UITable
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func refreshTable(notification:NSNotification) {
+        fetchData()
+        updateCounter()
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -167,6 +175,18 @@ class GuestSummaryViewController: UIViewController, UITableViewDelegate, UITable
             
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
+        
+        if segue.identifier == "editGuest"{
+            let vc = segue.destination as? AddGuestViewController
+            vc?.isEdit = isEdit
+            vc?.guest = selectedGuest
         }
     }
     
