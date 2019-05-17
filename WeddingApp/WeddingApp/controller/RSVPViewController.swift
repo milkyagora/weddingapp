@@ -125,14 +125,16 @@ extension RSVPViewController {
         tableView.deselectRow(at: indexPath, animated: false)
       
         print("DID SELECT row: \(indexPath.row), section: \(indexPath.section)")
-        
+    
         if indexPath.row > 0{
+            let guest = (tableArray[indexPath.section] as! Table).guests![indexPath.row-1] as! Guest
+            if !guest.hasArrived{
             guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
                     return
             }
             let context = appDelegate.persistentContainer.viewContext
-            let guest = (tableArray[indexPath.section] as! Table).guests![indexPath.row-1] as! Guest
+           
             let alert = UIAlertController(title: "Check-in Guest", message: "Do you want to check-in the guest?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
@@ -157,6 +159,7 @@ extension RSVPViewController {
                     
                 }}))
             self.present(alert, animated: true, completion: nil)
+        }
         }
     }
     

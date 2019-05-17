@@ -17,6 +17,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet var statusDropdown: DropDown!
     @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var saveBtnTopConstraint: NSLayoutConstraint!
     
     var tableArray = [NSManagedObject]()
      var dropdownData = [String]()
@@ -25,6 +26,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
     let nc = NotificationCenter.default
     var isEdit = false
     var guest = NSManagedObject()
+    var guestStatus = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +37,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         updateDropdownData()
         tableDropdown.delegate = self
         
-        if isEdit{
-            let g = guest as! Guest
-            guestName.text = g.name
-            tableDropdown.text = g.table?.name
-            self.selectedTable = g.table!
-        }
+        
         
         
         tableDropdown.rowHeight = 35
@@ -49,6 +46,36 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         tableDropdown.didSelect{(selectedText , index ,id) in
             self.selectedTable = self.tableArray[id] as! Table
             
+        }
+
+        statusDropdown.optionArray = ["Arrived", "Pending"]
+        statusDropdown.rowHeight = 35
+        statusDropdown.listHeight = 200
+        statusDropdown.selectedRowColor = UIColor.lightGray
+        statusDropdown.didSelect{(selectedText , index ,id) in
+            if (selectedText == "Arrived"){
+                self.guestStatus = true
+            }
+            else{
+                self.guestStatus = false
+            }
+        }
+        
+        if isEdit{
+            let g = guest as! Guest
+            guestName.text = g.name
+            tableDropdown.text = g.table?.name
+            self.selectedTable = g.table!
+            saveBtnTopConstraint.constant = 50
+            statusDropdown.isHidden = false
+            statusLabel.isHidden = false
+            
+            if g.hasArrived{
+                statusDropdown.text = "Arrived"
+            }
+            else{
+                statusDropdown.text = "Pending"
+            }
         }
         
 
@@ -118,6 +145,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         let context = appDelegate.persistentContainer.viewContext
         if isEdit{
             guest.setValue(guestName.text, forKey: "name")
+            guest.setValue(guestStatus, forKey: "hasArrived")
             selectedTable.addToGuests(guest as! Guest)
             
         }
