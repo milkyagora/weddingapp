@@ -9,9 +9,19 @@
 import UIKit
 
 class InitialViewController: UIViewController {
+    
+    
+    @IBOutlet weak var rsvpBtn: UIButton!
+    @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var manageTablesBtn: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        rsvpBtn.layer.cornerRadius = 5
+        addBtn.layer.cornerRadius = 5
+        manageTablesBtn.layer.cornerRadius = 5
+        
 
         // Do any additional setup after loading the view.
     }
