@@ -12,13 +12,13 @@ import CoreData
 
 class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     
-    @IBOutlet var counter: UILabel!
     var resultSearchController = UISearchController()
     var tableArray = [NSManagedObject]()
-    var filteredTableData = [String]()
+    var filteredTableData = [NSManagedObject]()
     var totalCount = Int()
     var guestCount = Int()
     let nc = NotificationCenter.default
+    var counterBtn = UIButton()
     
     @IBOutlet var tableView: ExpyTableView!
     override func viewDidLoad() {
@@ -29,8 +29,14 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
         tableView.tableFooterView = UIView()
         
         fetchData()
-        updateCounter()
+       
         
+        counterBtn =  UIButton(type: .custom)
+        counterBtn.setTitleColor(UIColor.black, for: .normal )
+        counterBtn.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        counterBtn.addTarget(self, action: #selector(clickCounterButton), for: .touchUpInside)
+        navigationItem.titleView = counterBtn
+        updateCounter()
         
         
         resultSearchController = ({
@@ -50,7 +56,7 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
         super.viewWillAppear(animated)
         nc.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(rawValue: "refreshTable"), object: nil)
         fetchData()
-        
+    
     }
     
     
@@ -108,6 +114,7 @@ extension RSVPViewController {
                     try context.save()
                     self.fetchData()
                     tableView.reloadData()
+                    self.updateCounter()
                    } catch let error as NSError {
                     print("Could not save. \(error), \(error.userInfo)")
                     }
@@ -191,6 +198,10 @@ extension RSVPViewController {
         updateCounter()
     }
     
+    @objc func clickCounterButton() {
+        self.performSegue(withIdentifier: "guestSummary", sender: self)
+    }
+    
     func updateCounter(){
         totalCount = 0
         guestCount = 0
@@ -204,8 +215,17 @@ extension RSVPViewController {
             }
         }
         
-        counter.text = "\(guestCount)/\(totalCount)"
+        counterBtn.setTitle("\(guestCount)/\(totalCount)", for: .normal)
+
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
+    }
+    
+    
     
     
 }
