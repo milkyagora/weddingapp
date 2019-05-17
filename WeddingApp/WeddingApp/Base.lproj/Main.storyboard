@@ -215,16 +215,16 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vju-cV-4mq">
-                                                    <rect key="frame" x="679" y="12.5" width="100" height="21"/>
+                                                    <rect key="frame" x="629" y="12.5" width="150" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="YeK-CY-7jg"/>
+                                                        <constraint firstAttribute="width" constant="150" id="YeK-CY-7jg"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Table 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUc-MR-wMf">
-                                                    <rect key="frame" x="20" y="11" width="644" height="23.5"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                    <rect key="frame" x="60" y="11" width="554" height="24"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -235,7 +235,7 @@
                                                 <constraint firstItem="OuO-u0-wVY" firstAttribute="centerY" secondItem="28L-sr-64v" secondAttribute="centerY" id="jU2-L4-Ldc"/>
                                                 <constraint firstItem="bUc-MR-wMf" firstAttribute="centerY" secondItem="28L-sr-64v" secondAttribute="centerY" id="mxA-e6-jhZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="OuO-u0-wVY" secondAttribute="trailing" constant="10" id="qsc-Qp-l8D"/>
-                                                <constraint firstItem="bUc-MR-wMf" firstAttribute="leading" secondItem="28L-sr-64v" secondAttribute="leading" constant="20" id="ull-7n-CZL"/>
+                                                <constraint firstItem="bUc-MR-wMf" firstAttribute="leading" secondItem="28L-sr-64v" secondAttribute="leading" constant="60" id="ull-7n-CZL"/>
                                                 <constraint firstItem="vju-cV-4mq" firstAttribute="leading" secondItem="bUc-MR-wMf" secondAttribute="trailing" constant="15" id="yz1-Lr-MDz"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -263,7 +263,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark Louie Ferrer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnN-R6-gTS">
-                                                    <rect key="frame" x="35" y="22" width="574" height="24"/>
+                                                    <rect key="frame" x="120" y="22" width="489" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -283,7 +283,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="y1g-MC-BPd" secondAttribute="trailing" id="IV2-Fm-6kC"/>
                                                 <constraint firstAttribute="trailing" secondItem="UZS-hz-N8t" secondAttribute="trailing" constant="55" id="LT3-Gv-897"/>
                                                 <constraint firstItem="y1g-MC-BPd" firstAttribute="leading" secondItem="X4M-SD-76o" secondAttribute="leading" id="ThT-Ec-9vy"/>
-                                                <constraint firstItem="NnN-R6-gTS" firstAttribute="leading" secondItem="X4M-SD-76o" secondAttribute="leading" constant="35" id="cu7-gW-LLV"/>
+                                                <constraint firstItem="NnN-R6-gTS" firstAttribute="leading" secondItem="X4M-SD-76o" secondAttribute="leading" constant="120" id="cu7-gW-LLV"/>
                                                 <constraint firstItem="UZS-hz-N8t" firstAttribute="centerY" secondItem="X4M-SD-76o" secondAttribute="centerY" id="ncB-Db-2uX"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -343,21 +343,21 @@
                                 <rect key="frame" x="0.0" y="74" width="834" height="1100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="tableCell" rowHeight="104" id="C17-mW-8vK" customClass="TableViewCell" customModule="WeddingApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="834" height="104"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="tableCell" rowHeight="120" id="C17-mW-8vK" customClass="TableViewCell" customModule="WeddingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="834" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C17-mW-8vK" id="hZt-w2-6zI">
-                                            <rect key="frame" x="0.0" y="0.0" width="834" height="103.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="834" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Table 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esT-Ql-ivJ">
-                                                    <rect key="frame" x="35" y="43" width="466" height="17.5"/>
+                                                    <rect key="frame" x="35" y="51" width="466" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capacity: 10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFY-Wo-Z4V">
-                                                    <rect key="frame" x="521" y="43" width="278" height="17.5"/>
+                                                    <rect key="frame" x="521" y="51" width="278" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -415,9 +415,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YWs-bv-gLz">
-                                <rect key="frame" x="0.0" y="74" width="834" height="41"/>
+                                <rect key="frame" x="0.0" y="86" width="834" height="51"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="b5t-aE-pEr"/>
+                                    <constraint firstAttribute="height" constant="50" id="b5t-aE-pEr"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Arrived"/>
@@ -428,7 +428,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kwp-Lh-cf0">
-                                <rect key="frame" x="0.0" y="114" width="834" height="1060"/>
+                                <rect key="frame" x="0.0" y="141" width="834" height="1033"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="guestCell" id="ovO-Vq-cPe" customClass="GuestTableViewCell" customModule="WeddingApp" customModuleProvider="target">
@@ -439,15 +439,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Louie Ferrer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYM-JF-dz6">
-                                                    <rect key="frame" x="35" y="12" width="165" height="20"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="35" y="13" width="471" height="17.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Table No." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvc-K2-Q7y">
-                                                    <rect key="frame" x="215" y="12" width="125" height="20"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="521" y="13" width="278" height="17.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -460,6 +460,7 @@
                                                 <constraint firstItem="bvc-K2-Q7y" firstAttribute="width" secondItem="RGf-ue-c9V" secondAttribute="width" multiplier="1/3" id="qvf-bM-trh"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="guestName" destination="WYM-JF-dz6" id="BVN-Ln-XWW"/>
                                             <outlet property="tableNo" destination="bvc-K2-Q7y" id="o2b-qA-KVo"/>
@@ -470,11 +471,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Kwp-Lh-cf0" firstAttribute="top" secondItem="YWs-bv-gLz" secondAttribute="bottom" id="6Kr-4s-h6q"/>
+                            <constraint firstItem="Kwp-Lh-cf0" firstAttribute="top" secondItem="YWs-bv-gLz" secondAttribute="bottom" constant="5" id="6Kr-4s-h6q"/>
                             <constraint firstItem="o8P-31-Kob" firstAttribute="trailing" secondItem="Kwp-Lh-cf0" secondAttribute="trailing" id="BDN-R1-yyL"/>
                             <constraint firstItem="YWs-bv-gLz" firstAttribute="leading" secondItem="o8P-31-Kob" secondAttribute="leading" id="XjO-qT-fkq"/>
                             <constraint firstItem="o8P-31-Kob" firstAttribute="trailing" secondItem="YWs-bv-gLz" secondAttribute="trailing" id="aGU-PO-Tjc"/>
-                            <constraint firstItem="YWs-bv-gLz" firstAttribute="top" secondItem="o8P-31-Kob" secondAttribute="top" id="oWx-xm-dzB"/>
+                            <constraint firstItem="YWs-bv-gLz" firstAttribute="top" secondItem="o8P-31-Kob" secondAttribute="top" constant="12" id="oWx-xm-dzB"/>
                             <constraint firstItem="Kwp-Lh-cf0" firstAttribute="leading" secondItem="o8P-31-Kob" secondAttribute="leading" id="qHG-Tt-Syp"/>
                             <constraint firstItem="o8P-31-Kob" firstAttribute="bottom" secondItem="Kwp-Lh-cf0" secondAttribute="bottom" id="zqP-cP-UCQ"/>
                         </constraints>
