@@ -14,7 +14,7 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     
     var resultSearchController = UISearchController()
     var tableArray = [NSManagedObject]()
-    var filteredTableData = [NSManagedObject]()
+    var filteredTableData = [Table]()
     var totalCount = Int()
     var guestCount = Int()
     let nc = NotificationCenter.default
@@ -49,7 +49,7 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
             
             return controller
         })()
-        
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +81,14 @@ extension RSVPViewController: ExpyTableViewDataSource {
     
     func tableView(_ tableView: ExpyTableView, expandableCellForSection section: Int) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! RSVPHeaderTableViewCell
-        var rowTable = tableArray[section] as! Table
+        var rowTable = Table()
+        if(resultSearchController.isActive){
+            rowTable = filteredTableData[section] as! Table
+        }
+        else{
+            rowTable = tableArray[section] as! Table
+        }
+        
         cell.tableLabel.text = rowTable.name
         cell.tableCounter.text = "\(rowTable.guests!.count)/\(rowTable.capacity)"
         cell.layoutMargins = UIEdgeInsets.zero
@@ -155,7 +162,14 @@ extension RSVPViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "guestCell") as! RSVPTableViewCell
-        let table = tableArray[indexPath.section] as! Table
+        var table = Table()
+        if resultSearchController.isActive{
+            table = filteredTableData[indexPath.section] as! Table
+        }
+        else{
+            table = tableArray[indexPath.section] as! Table
+        }
+        
         let guests = table.guests?.array as! NSArray
         let guest = guests[indexPath.row - 1] as! Guest
         
@@ -218,6 +232,7 @@ extension RSVPViewController {
         counterBtn.setTitle("\(guestCount)/\(totalCount)", for: .normal)
 
     }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
@@ -233,7 +248,18 @@ extension RSVPViewController {
 extension RSVPViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-        // TODO
+        filteredTableData.removeAll(keepingCapacity: false)
+        var filteredArray = [Table]()
+        for case let i as Table in tableArray{
+            filteredArray.append(i)
+        }
+        
+//        filteredTableData = filteredArray.filter {
+//            $0.rangeOfString(resultSearchController.searchBar.t, options: .CaseInsensitiveSearch) != nil
+//        }
+
+        
+        self.tableView.reloadData()
     }
 }
 

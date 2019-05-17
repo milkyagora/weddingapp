@@ -13,6 +13,8 @@ class GuestSummaryViewController: UIViewController, UITableViewDelegate, UITable
     var guestArray = [NSManagedObject]()
     var arrivedGuestArray = [Guest]()
     var pendingGuestArray = [Guest]()
+    var selectedGuest = NSManagedObject()
+    var isEdit = false
 
     @IBOutlet var segmentedController: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
@@ -71,8 +73,20 @@ class GuestSummaryViewController: UIViewController, UITableViewDelegate, UITable
         }
         delete.backgroundColor = UIColor.red
         
+        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+            self.isEdit = true
+            if self.isArrived{
+                 self.selectedGuest = self.arrivedGuestArray[indexPath.row]
+            }
+            else{
+                 self.selectedGuest = self.pendingGuestArray[indexPath.row]
+            }
+           
+            self.performSegue(withIdentifier: "editGuest", sender: self)
+        }
+        edit.backgroundColor = UIColor.lightGray
         
-        return [delete]
+        return [delete, edit]
     }
     
     func deleteData(row: Int){
