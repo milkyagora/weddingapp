@@ -44,28 +44,34 @@ class AddTableViewController: UIViewController {
     
     @IBAction func saveTable(_ sender: Any) {
         
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
+        if (tableName.text?.isEmpty)! || (capacity.text?.isEmpty)! {
+            showAlert(message: "Incomplete Details")
+        } else {
+            guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
+            }
+            let context = appDelegate.persistentContainer.viewContext
+            
+            if isEdit{
+                table.setValue(tableName.text, forKey: "name")
+                table.setValue(Int32(capacity.text!), forKey: "capacity")
+            }
+            else{
+                let table = Table(context: context)
+                table.name = tableName.text
+                table.capacity = Int32(capacity.text!)!
+            }
+            do {
+                try context.save()
+                self.nc.post(name: NSNotification.Name(rawValue: "refreshTable"), object: true)
+                dismissView()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
         }
-        let context = appDelegate.persistentContainer.viewContext
         
-        if isEdit{
-            table.setValue(tableName.text, forKey: "name")
-            table.setValue(Int32(capacity.text!), forKey: "capacity")
-        }
-        else{
-            let table = Table(context: context)
-            table.name = tableName.text
-            table.capacity = Int32(capacity.text!)!
-        }
-        do {
-            try context.save()
-            self.nc.post(name: NSNotification.Name(rawValue: "refreshTable"), object: true)
-            dismissView()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+        
         
     }
     

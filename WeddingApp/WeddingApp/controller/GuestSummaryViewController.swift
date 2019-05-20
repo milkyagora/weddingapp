@@ -116,6 +116,7 @@ class GuestSummaryViewController: UIViewController, UITableViewDelegate, UITable
             try context.save()
             self.fetchData()
             updateCounter()
+            self.nc.post(name: NSNotification.Name(rawValue: "refreshTable"), object: true)
             tableView.reloadData()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")

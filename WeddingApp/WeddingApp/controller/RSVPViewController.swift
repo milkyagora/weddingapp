@@ -14,11 +14,14 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     
     var resultSearchController = UISearchController()
     var tableArray = [NSManagedObject]()
+    var tableArrayCopy = [NSManagedObject]()
     var filteredTableData = [Table]()
     var totalCount = Int()
     var guestCount = Int()
     let nc = NotificationCenter.default
     var counterBtn = UIButton()
+    var appDelegate: AppDelegate?
+    var context: NSManagedObjectContext?
     
     @IBOutlet var tableView: ExpyTableView!
     override func viewDidLoad() {
@@ -56,7 +59,7 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
         super.viewWillAppear(animated)
         nc.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(rawValue: "refreshTable"), object: nil)
         fetchData()
-    
+        //tableView.reloadData()
     }
     
     
@@ -129,11 +132,6 @@ extension RSVPViewController {
         if indexPath.row > 0{
             let guest = (tableArray[indexPath.section] as! Table).guests![indexPath.row-1] as! Guest
             if !guest.hasArrived{
-            guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-                    return
-            }
-            let context = appDelegate.persistentContainer.viewContext
            
             let alert = UIAlertController(title: "Check-in Guest", message: "Do you want to check-in the guest?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -142,7 +140,7 @@ extension RSVPViewController {
                 case .default:
                    guest.setValue(true, forKey: "hasArrived")
                    do {
-                    try context.save()
+                    try self.context?.save()
                     self.fetchData()
                     tableView.reloadData()
                     self.updateCounter()
@@ -209,6 +207,7 @@ extension RSVPViewController {
         }
         else{
             cell.guestStatus.text = "Pending"
+            cell.guestStatus.textColor = UIColor.black
         }
         
         cell.guestLabel.text = guest.name
@@ -219,19 +218,19 @@ extension RSVPViewController {
     }
     
     func fetchData(){
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
+        tableArray.removeAll()
+        appDelegate =
+            UIApplication.shared.delegate as? AppDelegate
         
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
+        context =
+            appDelegate?.persistentContainer.viewContext
         
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "Table")
         
         do {
-            tableArray = try managedContext.fetch(fetchRequest)
+            tableArray = (try context?.fetch(fetchRequest))!
+            tableArrayCopy = (try context?.fetch(fetchRequest))!
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -280,34 +279,43 @@ extension RSVPViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
         filteredTableData.removeAll(keepingCapacity: false)
-        var filteredArray = [Table]()
-      
         
 //        filteredTableData = filteredArray.filter {
 //            $0.rangeOfString(resultSearchController.searchBar.t, options: .CaseInsensitiveSearch) != nil
 //        }
-
-        for case let i as Table in tableArray{
-            guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-                    return
-            }
-            let context = appDelegate.persistentContainer.viewContext
-            var newTable = Table(context: context)
-            newTable.setValue(i.name, forKeyPath: "name")
-           newTable.setValue(i.capacity, forKeyPath: "capacity")
-            for case let g as Guest in i.guests!{
-                    if (g.name?.range(of: resultSearchController.searchBar.text!, options: .caseInsensitive) != nil){
-                     newTable.addToGuests(g)
-                }
-                
-            }
-            if (newTable.guests?.count)! > 0{
-                filteredTableData.append(newTable)
-            }
-        }
+       
+//        for case let i as Table in tableArrayCopy{
+//
+//            var newTable = Table(context: context!)
+//            newTable.setValue(i.name, forKeyPath: "name")
+//           newTable.setValue(i.capacity, forKeyPath: "capacity")
+//            for case let g as Guest in i.guests!{
+//                    if (g.name?.range(of: resultSearchController.searchBar.text!, options: .caseInsensitive) != nil){
+//                     newTable.addToGuests(g)
+//                }
+//                
+//            }
+//            if (newTable.guests?.count)! > 0{
+//                filteredTableData.append(newTable)
+//            }
+//        }
         
         self.tableView.reloadData()
+    }
+}
+
+extension UIViewController {
+    
+    func showAlert(message: String){
+        
+        // create the alert
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

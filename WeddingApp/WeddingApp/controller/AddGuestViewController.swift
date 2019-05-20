@@ -36,8 +36,8 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         
         updateDropdownData()
         tableDropdown.delegate = self
-        
-       
+        guestName.delegate = self
+        statusDropdown.delegate = self
         
         tableDropdown.rowHeight = 35
         tableDropdown.listHeight = 400
@@ -80,7 +80,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    
+   
     
     func updateDropdownData(){
         dropdownData.removeAll()
@@ -160,11 +160,13 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
 
         do {
             try context.save()
+            
             self.nc.post(name: NSNotification.Name(rawValue: "refreshTable"), object: true)
             if isEdit{
                             _ = navigationController?.popViewController(animated: true)
             }
             else{
+                showAlert(message: "Success")
                 guestName.text = ""
                 tableDropdown.text = ""
                 updateDropdownData()
@@ -177,7 +179,22 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveGuest(_ sender: Any) {
-        addGuest()
+        if isEdit{
+            if (guestName.text?.isEmpty)! || (statusDropdown.text?.isEmpty)! || (tableDropdown.text?.isEmpty)!{
+                showAlert(message: "Incomplete Details")
+            } else {
+                addGuest()
+            }
+        }
+            
+        else{
+            if (guestName.text?.isEmpty)! || (tableDropdown.text?.isEmpty)!{
+                showAlert(message: "Incomplete Details")
+            } else {
+                addGuest()
+            }
+        }
+       
     }
     
     
