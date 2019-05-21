@@ -54,11 +54,13 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
         tableView.reloadData()
         
         
+        if self.tableView.numberOfSections > 0 {
+        
             for i in 0...self.tableView.numberOfSections-1{
                 self.tableView.expand(i)
             }
         
-        
+        }
         
     }
     
