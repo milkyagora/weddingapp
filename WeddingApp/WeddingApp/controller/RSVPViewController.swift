@@ -15,7 +15,7 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     var resultSearchController = UISearchController()
     var tableArray = [NSManagedObject]()
     var tableArrayCopy = [NSManagedObject]()
-    var filteredTableData = [Table]()
+    var filteredTableData = [NSManagedObject]()
     var totalCount = Int()
     var guestCount = Int()
     let nc = NotificationCenter.default
@@ -53,6 +53,14 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
             return controller
         })()
         tableView.reloadData()
+        
+        
+            for i in 0...self.tableView.numberOfSections-1{
+                self.tableView.expand(i)
+            }
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -179,7 +187,7 @@ extension RSVPViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if  (resultSearchController.isActive) {
-            return (filteredTableData[section].guests?.count)! + 1
+            return ((filteredTableData[section] as! Table).guests?.count)! + 1
         }
         else{
             return ((tableArray[section] as! Table).guests?.count)! + 1
@@ -280,28 +288,44 @@ extension RSVPViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filteredTableData.removeAll(keepingCapacity: false)
         
-//        filteredTableData = filteredArray.filter {
-//            $0.rangeOfString(resultSearchController.searchBar.t, options: .CaseInsensitiveSearch) != nil
-//        }
+        var copy = [NSManagedObject]()
+        for i in tableArray{
+            copy.append(i.clone(in: context, exludeEntities: nil)!)
+        }
        
-//        for case let i as Table in tableArrayCopy{
-//
-//            var newTable = Table(context: context!)
-//            newTable.setValue(i.name, forKeyPath: "name")
-//           newTable.setValue(i.capacity, forKeyPath: "capacity")
-//            for case let g as Guest in i.guests!{
-//                    if (g.name?.range(of: resultSearchController.searchBar.text!, options: .caseInsensitive) != nil){
-//                     newTable.addToGuests(g)
-//                }
-//                
-//            }
-//            if (newTable.guests?.count)! > 0{
-//                filteredTableData.append(newTable)
-//            }
-//        }
+       
+        for case let i as Table in copy{
+
+            var newTable = Table(context: context!)
+            newTable.setValue(i.name, forKeyPath: "name")
+           newTable.setValue(i.capacity, forKeyPath: "capacity")
+            for case let g as Guest in i.guests!{
+                    if (g.name?.range(of: resultSearchController.searchBar.text!, options: .caseInsensitive) != nil){
+                     newTable.addToGuests(g)
+                }
+                
+            }
+            if (newTable.guests?.count)! > 0{
+                filteredTableData.append(newTable)
+            }
+        }
+        
+        if filteredTableData.count == 0{
+            filteredTableData = tableArray
+        }
         
         self.tableView.reloadData()
+        
+        if self.tableView.numberOfSections > 0{
+            for i in 0...self.tableView.numberOfSections-1{
+                self.tableView.expand(i)
+            }
+        }
+        
+       
     }
+    
+  
 }
 
 extension UIViewController {
@@ -316,6 +340,100 @@ extension UIViewController {
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension NSManagedObject {
+    func clone(in context: NSManagedObjectContext?, exludeEntities namesOfEntitiesToExclude: [Any]?) -> NSManagedObject? {
+        return clone(in: context, withCopiedCache: [:], exludeEntities: namesOfEntitiesToExclude)
+    }
+    
+
+    func clone(in context: NSManagedObjectContext?, withCopiedCache alreadyCopied: [AnyHashable : Any]?, exludeEntities namesOfEntitiesToExclude: [Any]?) -> NSManagedObject? {
+        var alreadyCopied = alreadyCopied
+        let entityName = entity.name
+
+        if (namesOfEntitiesToExclude as NSArray?)?.contains(entityName ?? "") ?? false {
+            return nil
+        }
+
+        var cloned = alreadyCopied?[objectID] as? NSManagedObject
+        if cloned != nil {
+            return cloned
+        }
+        
+        //create new object in data store
+        cloned = NSEntityDescription.insertNewObject(forEntityName: entityName!, into: context!)
+        alreadyCopied![objectID] = cloned
+        
+        //loop through all attributes and assign then to the clone
+        var attributes = NSEntityDescription.entity(forEntityName: entityName!, in: context!)?.attributesByName
+        
+        for attr in attributes ?? [:] {
+            cloned?.setValue(self.value(forKey: attr.key), forKey: attr.key)
+        }
+        
+        //Loop through all relationships, and clone them.
+        var relationships = NSEntityDescription.entity(forEntityName: entityName!, in: context!)?.relationshipsByName
+        
+        for relName in (relationships?.keys)! {
+            
+            var rel = relationships?[relName] as? NSRelationshipDescription
+            if (rel?.isToMany)! {
+                //get a set of all objects in the relationship
+                if (rel?.isOrdered)!{
+                    var sourceArray = Array(mutableOrderedSetValue(forKey: relName))
+                    var clonedSet = cloned?.mutableOrderedSetValue(forKey: relName)
+                    for relatedObject in sourceArray as? [NSManagedObject] ?? [] {
+                        var clonedRelatedObject: NSManagedObject? = relatedObject.clone(in: context, withCopiedCache: alreadyCopied, exludeEntities: namesOfEntitiesToExclude)
+                        clonedSet?.add(clonedRelatedObject)
+                    }
+                }
+                else{
+                    var sourceArray = Array(mutableSetValue(forKey: relName))
+                    var clonedSet = cloned?.mutableSetValue(forKey: relName)
+                    for relatedObject in sourceArray as? [NSManagedObject] ?? [] {
+                        var clonedRelatedObject: NSManagedObject? = relatedObject.clone(in: context, withCopiedCache: alreadyCopied, exludeEntities: namesOfEntitiesToExclude)
+                        clonedSet?.add(clonedRelatedObject)
+                    }
+                }
+                
+                
+               
+            } else {
+                cloned?.setValue(self.value(forKey: relName), forKeyPath: relName)
+                //cloned![relName] = self[relName]
+            }
+        }
+        
+        
+//        for relName in (relationships?.keys)! {
+//            var rel = relationships?[relName]
+//
+//            var keyName = rel?.name
+//            if rel?.isToMany != nil {
+//                //get a set of all objects in the relationship
+//                var sourceSet = mutableSetValue(forKey: keyName ?? "")
+//                var clonedSet = cloned?.mutableSetValue(forKey: keyName ?? "")
+//                var e: NSEnumerator? = sourceSet.objectEnumerator()
+//                var relatedObject: NSManagedObject?
+//                while relatedObject == e?.nextObject() as? NSManagedObject {
+//                    //Clone it, and add clone to set
+//                    var clonedRelatedObject: NSManagedObject? = relatedObject?.clone(in: context, withCopiedCache: alreadyCopied, exludeEntities: namesOfEntitiesToExclude)
+//                    if let clonedRelatedObject = clonedRelatedObject {
+//                        clonedSet?.add(clonedRelatedObject)
+//                    }
+//                }
+//            }
+//            else{
+//                var relatedObject = self.value(forKey: keyName!) as? NSManagedObject
+//                if relatedObject != nil {
+//                    var clonedRelatedObject: NSManagedObject? = relatedObject?.clone(in: context, withCopiedCache: alreadyCopied, exludeEntities: namesOfEntitiesToExclude)
+//                    cloned?.setValue(clonedRelatedObject, forKeyPath: keyName!)
+//                }
+//            }
+//        }
+        return cloned
     }
 }
 
