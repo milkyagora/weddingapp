@@ -98,6 +98,7 @@ class ManageTablesViewController: UIViewController, UITableViewDelegate, UITable
         let managedContext =
             appDelegate.persistentContainer.viewContext
         
+        
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "Table")
         

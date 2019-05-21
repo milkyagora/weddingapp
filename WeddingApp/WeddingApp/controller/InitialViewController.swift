@@ -34,6 +34,7 @@ class InitialViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext.reset()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

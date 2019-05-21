@@ -14,14 +14,13 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     
     var resultSearchController = UISearchController()
     var tableArray = [NSManagedObject]()
-    var tableArrayCopy = [NSManagedObject]()
     var filteredTableData = [NSManagedObject]()
     var totalCount = Int()
     var guestCount = Int()
     let nc = NotificationCenter.default
     var counterBtn = UIButton()
-    var appDelegate: AppDelegate?
-    var context: NSManagedObjectContext?
+    var isSearchBarUsed = false
+    
     
     @IBOutlet var tableView: ExpyTableView!
     override func viewDidLoad() {
@@ -66,10 +65,11 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nc.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(rawValue: "refreshTable"), object: nil)
-        fetchData()
-        //tableView.reloadData()
+//        fetchData()
+//        tableView.reloadData()
     }
     
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -133,6 +133,11 @@ extension RSVPViewController: ExpyTableViewDataSource {
 
 extension RSVPViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var appDelegate =
+            UIApplication.shared.delegate as? AppDelegate
+        
+        var context =
+            appDelegate?.persistentContainer.viewContext
         tableView.deselectRow(at: indexPath, animated: false)
       
         print("DID SELECT row: \(indexPath.row), section: \(indexPath.section)")
@@ -148,7 +153,7 @@ extension RSVPViewController {
                 case .default:
                    guest.setValue(true, forKey: "hasArrived")
                    do {
-                    try self.context?.save()
+                    try context?.save()
                     self.fetchData()
                     tableView.reloadData()
                     self.updateCounter()
@@ -226,11 +231,11 @@ extension RSVPViewController {
     }
     
     func fetchData(){
-        tableArray.removeAll()
-        appDelegate =
+        tableArray = [NSManagedObject]()
+        var appDelegate =
             UIApplication.shared.delegate as? AppDelegate
         
-        context =
+        var context =
             appDelegate?.persistentContainer.viewContext
         
         let fetchRequest =
@@ -238,7 +243,6 @@ extension RSVPViewController {
         
         do {
             tableArray = (try context?.fetch(fetchRequest))!
-            tableArrayCopy = (try context?.fetch(fetchRequest))!
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -276,6 +280,12 @@ extension RSVPViewController {
         let backItem = UIBarButtonItem()
         backItem.title = "Back"
         navigationItem.backBarButtonItem = backItem
+        
+        if segue.identifier == "addGuest"{
+            if isSearchBarUsed{
+                (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext.reset()
+            }
+        }
     }
     
     
@@ -286,7 +296,13 @@ extension RSVPViewController {
 extension RSVPViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
+        isSearchBarUsed = true
         filteredTableData.removeAll(keepingCapacity: false)
+        var appDelegate =
+            UIApplication.shared.delegate as? AppDelegate
+        
+        var context =
+            appDelegate?.persistentContainer.viewContext
         
         var copy = [NSManagedObject]()
         for i in tableArray{
@@ -296,7 +312,7 @@ extension RSVPViewController: UISearchResultsUpdating {
        
         for case let i as Table in copy{
 
-            var newTable = Table(context: context!)
+            let newTable = Table(context: context!)
             newTable.setValue(i.name, forKeyPath: "name")
            newTable.setValue(i.capacity, forKeyPath: "capacity")
             for case let g as Guest in i.guests!{
@@ -308,21 +324,22 @@ extension RSVPViewController: UISearchResultsUpdating {
             if (newTable.guests?.count)! > 0{
                 filteredTableData.append(newTable)
             }
+            
         }
         
-        if filteredTableData.count == 0{
+        
+        if resultSearchController.searchBar.text == ""{
             filteredTableData = tableArray
         }
         
         self.tableView.reloadData()
-        
         if self.tableView.numberOfSections > 0{
             for i in 0...self.tableView.numberOfSections-1{
                 self.tableView.expand(i)
             }
         }
         
-       
+        
     }
     
   
@@ -367,7 +384,7 @@ extension NSManagedObject {
         alreadyCopied![objectID] = cloned
         
         //loop through all attributes and assign then to the clone
-        var attributes = NSEntityDescription.entity(forEntityName: entityName!, in: context!)?.attributesByName
+        let attributes = NSEntityDescription.entity(forEntityName: entityName!, in: context!)?.attributesByName
         
         for attr in attributes ?? [:] {
             cloned?.setValue(self.value(forKey: attr.key), forKey: attr.key)
@@ -378,22 +395,22 @@ extension NSManagedObject {
         
         for relName in (relationships?.keys)! {
             
-            var rel = relationships?[relName] as? NSRelationshipDescription
+            let rel = relationships?[relName]
             if (rel?.isToMany)! {
                 //get a set of all objects in the relationship
                 if (rel?.isOrdered)!{
-                    var sourceArray = Array(mutableOrderedSetValue(forKey: relName))
-                    var clonedSet = cloned?.mutableOrderedSetValue(forKey: relName)
+                    let sourceArray = Array(mutableOrderedSetValue(forKey: relName))
+                    let clonedSet = cloned?.mutableOrderedSetValue(forKey: relName)
                     for relatedObject in sourceArray as? [NSManagedObject] ?? [] {
-                        var clonedRelatedObject: NSManagedObject? = relatedObject.clone(in: context, withCopiedCache: alreadyCopied, exludeEntities: namesOfEntitiesToExclude)
+                        let clonedRelatedObject: NSManagedObject? = relatedObject.clone(in: context, withCopiedCache: alreadyCopied, exludeEntities: namesOfEntitiesToExclude)
                         clonedSet?.add(clonedRelatedObject)
                     }
                 }
                 else{
-                    var sourceArray = Array(mutableSetValue(forKey: relName))
-                    var clonedSet = cloned?.mutableSetValue(forKey: relName)
+                    let sourceArray = Array(mutableSetValue(forKey: relName))
+                    let clonedSet = cloned?.mutableSetValue(forKey: relName)
                     for relatedObject in sourceArray as? [NSManagedObject] ?? [] {
-                        var clonedRelatedObject: NSManagedObject? = relatedObject.clone(in: context, withCopiedCache: alreadyCopied, exludeEntities: namesOfEntitiesToExclude)
+                        let clonedRelatedObject: NSManagedObject? = relatedObject.clone(in: context, withCopiedCache: alreadyCopied, exludeEntities: namesOfEntitiesToExclude)
                         clonedSet?.add(clonedRelatedObject)
                     }
                 }
@@ -405,34 +422,6 @@ extension NSManagedObject {
                 //cloned![relName] = self[relName]
             }
         }
-        
-        
-//        for relName in (relationships?.keys)! {
-//            var rel = relationships?[relName]
-//
-//            var keyName = rel?.name
-//            if rel?.isToMany != nil {
-//                //get a set of all objects in the relationship
-//                var sourceSet = mutableSetValue(forKey: keyName ?? "")
-//                var clonedSet = cloned?.mutableSetValue(forKey: keyName ?? "")
-//                var e: NSEnumerator? = sourceSet.objectEnumerator()
-//                var relatedObject: NSManagedObject?
-//                while relatedObject == e?.nextObject() as? NSManagedObject {
-//                    //Clone it, and add clone to set
-//                    var clonedRelatedObject: NSManagedObject? = relatedObject?.clone(in: context, withCopiedCache: alreadyCopied, exludeEntities: namesOfEntitiesToExclude)
-//                    if let clonedRelatedObject = clonedRelatedObject {
-//                        clonedSet?.add(clonedRelatedObject)
-//                    }
-//                }
-//            }
-//            else{
-//                var relatedObject = self.value(forKey: keyName!) as? NSManagedObject
-//                if relatedObject != nil {
-//                    var clonedRelatedObject: NSManagedObject? = relatedObject?.clone(in: context, withCopiedCache: alreadyCopied, exludeEntities: namesOfEntitiesToExclude)
-//                    cloned?.setValue(clonedRelatedObject, forKeyPath: keyName!)
-//                }
-//            }
-//        }
         return cloned
     }
 }

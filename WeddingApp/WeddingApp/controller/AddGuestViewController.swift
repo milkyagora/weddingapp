@@ -61,6 +61,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         }
         
         if isEdit{
+            
             let g = guest as! Guest
             guestName.text = g.name
             tableDropdown.text = g.table?.name
@@ -122,6 +123,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         
         let managedContext =
             appDelegate.persistentContainer.viewContext
+        
         
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "Table")
