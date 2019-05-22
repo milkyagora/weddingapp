@@ -114,6 +114,7 @@ class ManageTablesViewController: UIViewController, UITableViewDelegate, UITable
         if segue.identifier == "addTable"{
             let vc = segue.destination as? AddTableViewController
             vc?.isEdit = isEdit
+            isEdit = false
             vc?.table = selectedTable
         }
     }
