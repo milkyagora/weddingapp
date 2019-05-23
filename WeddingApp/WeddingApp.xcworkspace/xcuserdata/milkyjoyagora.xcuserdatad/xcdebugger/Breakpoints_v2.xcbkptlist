@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.863554"
+            timestampString = "580305386.63936"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "tableView(_:canExpandSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.864138"
+            timestampString = "580305386.6403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.864899"
+            timestampString = "580305386.640908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.8654521"
+            timestampString = "580305386.6414061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.8658431"
+            timestampString = "580305386.642027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "refreshTable(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.866196"
+            timestampString = "580305386.642516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "RSVPViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.866576"
+            timestampString = "580305386.643028"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,27 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.866886"
+            timestampString = "580305386.643466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.867169"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.8674279"
+            timestampString = "580305386.643865"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,27 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.8676879"
+            timestampString = "580305386.644251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "tableView(_:expandableCellForSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.8679301"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "fetchData()"
             landmarkType = "7">
             <Locations>
@@ -330,11 +298,11 @@
                   moduleName = "WeddingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/milkyjoyagora/Documents/weddingapp/WeddingApp/WeddingApp/controller/RSVPViewController.swift"
-                  timestampString = "580301503.1306241"
+                  timestampString = "580305234.294647"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "252"
-                  endingLineNumber = "252"
+                  startingLineNumber = "294"
+                  endingLineNumber = "294"
                   offsetFromSymbolStart = "548">
                </Location>
                <Location
@@ -345,11 +313,11 @@
                   moduleName = "WeddingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/milkyjoyagora/Documents/weddingapp/WeddingApp/WeddingApp/controller/RSVPViewController.swift"
-                  timestampString = "580301503.132792"
+                  timestampString = "580305234.296486"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "252"
-                  endingLineNumber = "252"
+                  startingLineNumber = "294"
+                  endingLineNumber = "294"
                   offsetFromSymbolStart = "1797">
                </Location>
             </Locations>
@@ -362,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.868171"
+            timestampString = "580305386.644628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "fetchData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +346,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.868413"
+            timestampString = "580305386.644989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
+            landmarkName = "updateSearchResults(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeddingApp/controller/RSVPViewController.swift"
+            timestampString = "580305386.645347"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
             landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
             <Locations>
@@ -394,92 +378,12 @@
                   moduleName = "WeddingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/milkyjoyagora/Documents/weddingapp/WeddingApp/WeddingApp/controller/RSVPViewController.swift"
-                  timestampString = "580301503.1418951"
+                  timestampString = "580305234.309936"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "342"
-                  endingLineNumber = "342"
-                  offsetFromSymbolStart = "6938">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeddingApp.RSVPViewController.updateSearchResults(for: __ObjC.UISearchController) -&gt; ()"
-                  moduleName = "WeddingApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/milkyjoyagora/Documents/weddingapp/WeddingApp/WeddingApp/controller/RSVPViewController.swift"
-                  timestampString = "580301503.1435831"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "342"
-                  endingLineNumber = "342"
-                  offsetFromSymbolStart = "9510">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.8686531"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
-            landmarkName = "updateSearchResults(for:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.868889"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
-            landmarkName = "updateSearchResults(for:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.8691289"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
-            landmarkName = "updateSearchResults(for:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WeddingApp.RSVPViewController.updateSearchResults(for: __ObjC.UISearchController) -&gt; ()"
-                  moduleName = "WeddingApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/milkyjoyagora/Documents/weddingapp/WeddingApp/WeddingApp/controller/RSVPViewController.swift"
-                  timestampString = "580301503.157738"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "382"
-                  endingLineNumber = "382"
-                  offsetFromSymbolStart = "9057">
+                  startingLineNumber = "424"
+                  endingLineNumber = "424"
+                  offsetFromSymbolStart = "8343">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -489,12 +393,12 @@
                   moduleName = "WeddingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/milkyjoyagora/Documents/weddingapp/WeddingApp/WeddingApp/controller/RSVPViewController.swift"
-                  timestampString = "580301503.159348"
+                  timestampString = "580305234.311606"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "317"
-                  endingLineNumber = "317"
-                  offsetFromSymbolStart = "21">
+                  startingLineNumber = "426"
+                  endingLineNumber = "426"
+                  offsetFromSymbolStart = "4">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -506,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.869363"
+            timestampString = "580305386.6456929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
             landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,59 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.869596"
+            timestampString = "580305386.646036"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
-            landmarkName = "updateSearchResults(for:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.8698291"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
-            landmarkName = "updateSearchResults(for:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.870065"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
-            landmarkName = "updateSearchResults(for:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.870297"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
             landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
             <Locations>
@@ -586,12 +442,12 @@
                   moduleName = "WeddingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/milkyjoyagora/Documents/weddingapp/WeddingApp/WeddingApp/controller/RSVPViewController.swift"
-                  timestampString = "580301503.178395"
+                  timestampString = "580305234.31952"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "369"
-                  endingLineNumber = "369"
-                  offsetFromSymbolStart = "8701">
+                  startingLineNumber = "411"
+                  endingLineNumber = "411"
+                  offsetFromSymbolStart = "8005">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -601,11 +457,11 @@
                   moduleName = "WeddingApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/milkyjoyagora/Documents/weddingapp/WeddingApp/WeddingApp/controller/RSVPViewController.swift"
-                  timestampString = "580301503.1800849"
+                  timestampString = "580305234.321394"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "370"
-                  endingLineNumber = "370"
+                  startingLineNumber = "412"
+                  endingLineNumber = "412"
                   offsetFromSymbolStart = "29">
                </Location>
             </Locations>
@@ -618,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.870531"
+            timestampString = "580305386.646378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -634,12 +490,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeddingApp/controller/RSVPViewController.swift"
-            timestampString = "580301616.870766"
+            timestampString = "580305386.646724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "370"
-            endingLineNumber = "370"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
             landmarkName = "updateSearchResults(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeddingApp/controller/RSVPViewController.swift"
+            timestampString = "580305386.647054"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "tableView(_:expandableCellForSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

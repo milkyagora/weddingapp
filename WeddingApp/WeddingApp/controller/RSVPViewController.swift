@@ -10,7 +10,7 @@ import UIKit
 import ExpyTableView
 import CoreData
 
-class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
+class RSVPViewController:  UIViewController, ExpyTableViewDelegate, UISearchControllerDelegate {
     
     var resultSearchController = UISearchController()
     var tableArray = [NSManagedObject]()
@@ -32,7 +32,7 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
         tableView.tableFooterView = UIView()
         
         fetchData()
-       
+        
         
         counterBtn =  UIButton(type: .custom)
         counterBtn.setTitleColor(UIColor.black, for: .normal )
@@ -49,18 +49,20 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
             controller.searchBar.sizeToFit()
             
             tableView.tableHeaderView = controller.searchBar
+            controller.delegate = self
             
             return controller
         })()
+        resultSearchController.delegate = self
         tableView.reloadData()
         
         
         if self.tableView.numberOfSections > 0 {
-        
+            
             for i in 0...self.tableView.numberOfSections-1{
                 self.tableView.expand(i)
             }
-        
+            
         }
         
     }
@@ -68,16 +70,23 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         nc.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(rawValue: "refreshTable"), object: nil)
-//        fetchData()
-//        tableView.reloadData()
+        //        fetchData()
+        //        tableView.reloadData()
     }
     
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        var context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        context?.reset()
+        self.fetchData()
+    }
+    
     
     
     @IBAction func addGuest(_ sender: Any) {
@@ -142,42 +151,71 @@ extension RSVPViewController {
         var context =
             appDelegate?.persistentContainer.viewContext
         tableView.deselectRow(at: indexPath, animated: false)
-      
+        
         print("DID SELECT row: \(indexPath.row), section: \(indexPath.section)")
-    
+        
         if indexPath.row > 0{
-            let guest = (tableArray[indexPath.section] as! Table).guests![indexPath.row-1] as! Guest
+            var guest = Guest()
+            if resultSearchController.isActive{
+                guest = (filteredTableData[indexPath.section] as! Table).guests![indexPath.row-1] as! Guest
+            }
+            else{
+                guest = (tableArray[indexPath.section] as! Table).guests![indexPath.row-1] as! Guest
+            }
+            
             if !guest.hasArrived{
-           
-            let alert = UIAlertController(title: "Check-in Guest", message: "Do you want to check-in the guest?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-                switch action.style{
-                case .default:
-                   guest.setValue(true, forKey: "hasArrived")
-                   do {
-                    try context?.save()
-                    self.fetchData()
-                    tableView.reloadData()
-                    self.updateCounter()
-                    
-                   } catch let error as NSError {
-                    print("Could not save. \(error), \(error.userInfo)")
-                    }
-                    
-                case .cancel:
-                    print("cancel")
-                    
-                case .destructive:
-                    print("destructive")
-                    
-                    
-                }}))
                 
-
-                    self.present(alert, animated: true, completion: nil)
-           
-        }
+                let alert = UIAlertController(title: "Check-in Guest", message: "Do you want to check-in the guest?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                    switch action.style{
+                    case .default:
+                        guest.setValue(true, forKey: "hasArrived")
+                        let group = DispatchGroup()
+                        group.enter()
+                        
+                        
+                        DispatchQueue.main.async {
+                            do {
+                                if !self.resultSearchController.isActive{
+                                try context?.save()
+                                }
+                                
+                                 group.leave()
+                                
+                            } catch let error as NSError {
+                                print("Could not save. \(error), \(error.userInfo)")
+                            }
+                           
+                        }
+                        
+                        group.notify(queue: .main) {
+                            if self.resultSearchController.isActive{
+                                
+                                tableView.reloadData()
+                                self.updateCounter()
+                            }
+                            else{
+                                
+                                self.fetchData()
+                                tableView.reloadData()
+                                self.updateCounter()
+                            }
+                        }
+                        
+                    case .cancel:
+                        print("cancel")
+                        
+                    case .destructive:
+                        print("destructive")
+                        
+                        
+                    }}))
+                
+                
+                self.present(alert, animated: true, completion: nil)
+                
+            }
         }
     }
     
@@ -279,9 +317,9 @@ extension RSVPViewController {
         }
         
         counterBtn.setTitle("\(guestCount)/\(totalCount)", for: .normal)
-
+        
     }
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
@@ -327,15 +365,15 @@ extension RSVPViewController: UISearchResultsUpdating {
         else{
             print("wala1")
         }
-       
+        
         for case let i as Table in copy{
-
+            
             let newTable = Table(context: context!)
             newTable.setValue(i.name, forKeyPath: "name")
-           newTable.setValue(i.capacity, forKeyPath: "capacity")
+            newTable.setValue(i.capacity, forKeyPath: "capacity")
             for case let g as Guest in i.guests!{
-                    if (g.name?.range(of: resultSearchController.searchBar.text!, options: .caseInsensitive) != nil){
-                     newTable.addToGuests(g)
+                if (g.name?.range(of: resultSearchController.searchBar.text!, options: .caseInsensitive) != nil){
+                    newTable.addToGuests(g)
                 }
                 
             }
@@ -351,17 +389,17 @@ extension RSVPViewController: UISearchResultsUpdating {
             
         }
         
-       
-
         
-       
+        
+        
+        
         
         
         if resultSearchController.searchBar.text == ""{
             filteredTableData = tableArray
         }
         
-       
+        
         
         let group = DispatchGroup()
         group.enter()
@@ -380,28 +418,22 @@ extension RSVPViewController: UISearchResultsUpdating {
         // after enter() and leave() calls are balanced
         
         group.notify(queue: .main) {
-            if (context?.hasChanges)!{
-                context?.reset()
-                self.fetchData()
-            }
-            else{
-                print("wala")
-            }
+            
         }
-//        DispatchQueue.main.async {
-//            if (context?.hasChanges)!{
-//              context?.reset()
-//                self.fetchData()
-//            }
-//            else{
-//                print("wala")
-//            }
-//        }
-       
+        //        DispatchQueue.main.async {
+        //            if (context?.hasChanges)!{
+        //              context?.reset()
+        //                self.fetchData()
+        //            }
+        //            else{
+        //                print("wala")
+        //            }
+        //        }
+        
         
     }
     
-  
+    
 }
 
 extension UIViewController {
@@ -424,15 +456,15 @@ extension NSManagedObject {
         return clone(in: context, withCopiedCache: [:], exludeEntities: namesOfEntitiesToExclude)
     }
     
-
+    
     func clone(in context: NSManagedObjectContext?, withCopiedCache alreadyCopied: [AnyHashable : Any]?, exludeEntities namesOfEntitiesToExclude: [Any]?) -> NSManagedObject? {
         var alreadyCopied = alreadyCopied
         let entityName = entity.name
-
+        
         if (namesOfEntitiesToExclude as NSArray?)?.contains(entityName ?? "") ?? false {
             return nil
         }
-
+        
         var cloned = alreadyCopied?[objectID] as? NSManagedObject
         if cloned != nil {
             return cloned
@@ -475,7 +507,7 @@ extension NSManagedObject {
                 }
                 
                 
-               
+                
             } else {
                 cloned?.setValue(self.value(forKey: relName), forKeyPath: relName)
                 //cloned![relName] = self[relName]
