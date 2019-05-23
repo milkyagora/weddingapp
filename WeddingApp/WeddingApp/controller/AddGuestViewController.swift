@@ -66,8 +66,11 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
             
             let g = guest as! Guest
             guestName.text = g.name
-            tableDropdown.text = g.table?.name
-            self.selectedTable = g.table!
+            if g.table != nil{
+                tableDropdown.text = g.table?.name
+                self.selectedTable = g.table!
+            }
+           
             saveBtnTopConstraint.constant = 50
             statusDropdown.isHidden = false
             statusLabel.isHidden = false

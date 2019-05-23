@@ -85,6 +85,7 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate, UISearchCont
         var context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
         context?.reset()
         self.fetchData()
+        updateCounter()
     }
     
     
@@ -156,6 +157,9 @@ extension RSVPViewController {
         
         if indexPath.row > 0{
             var guest = Guest()
+            let childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+            childContext.parent = context
+            var guestCopy = Guest(context: childContext)
             if resultSearchController.isActive{
                 guest = (filteredTableData[indexPath.section] as! Table).guests![indexPath.row-1] as! Guest
             }
@@ -170,30 +174,64 @@ extension RSVPViewController {
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
                     switch action.style{
                     case .default:
-                        guest.setValue(true, forKey: "hasArrived")
-                        let group = DispatchGroup()
-                        group.enter()
-                        
-                        
-                        DispatchQueue.main.async {
+                        if self.resultSearchController.isActive{
+                            
+                            guestCopy.setValue(guest.name, forKey: "name")
+                            guestCopy.setValue(true, forKey: "hasArrived")
+                            guestCopy.table = childContext.object(with: (guest.table?.objectID)!) as? Table
+                            context?.reset()
+                            
+                            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Guest")
+                            var resultsArr:[Guest] = []
                             do {
-                                if !self.resultSearchController.isActive{
-                                try context?.save()
+                                resultsArr = try (context!.fetch(fetchRequest) as! [Guest])
+                            } catch {
+                                let fetchError = error as NSError
+                                print(fetchError)
+                            }
+                            
+                            if resultsArr.count > 0 {
+                                for x in resultsArr {
+                                    if x.name == guestCopy.name &&  x.table?.name == guestCopy.table?.name{
+                                        context?.delete(x)
+                                    }
+                                }
+                            }
+                            
+
+                            
+                            
+                            
+                        }
+                        else{
+                            guest.setValue(true, forKey: "hasArrived")
+                        }
+                        
+                        
+                        
+                            do {
+                                if self.resultSearchController.isActive{
+                                    //context?.delete((context?.object(with: guestCopy.objectID))!)
+                                   
+                                    try childContext.save()
+                                    try context?.save()
+                                    
+                                }
+                                else{
+                                    try context?.save()
                                 }
                                 
-                                 group.leave()
                                 
                             } catch let error as NSError {
                                 print("Could not save. \(error), \(error.userInfo)")
                             }
                            
-                        }
                         
-                        group.notify(queue: .main) {
+                        
+                       
                             if self.resultSearchController.isActive{
-                                
-                                tableView.reloadData()
-                                self.updateCounter()
+                                self.fetchData()
+                                self.updateSearchResults(for: self.resultSearchController)
                             }
                             else{
                                 
@@ -201,7 +239,7 @@ extension RSVPViewController {
                                 tableView.reloadData()
                                 self.updateCounter()
                             }
-                        }
+                        
                         
                     case .cancel:
                         print("cancel")
@@ -341,12 +379,6 @@ extension RSVPViewController {
 extension RSVPViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-        if ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext.hasChanges)!{
-            print("meronbaya")
-        }
-        else{
-            print("walabaya")
-        }
         isSearchBarUsed = true
         filteredTableData.removeAll(keepingCapacity: false)
         var appDelegate =
@@ -359,12 +391,7 @@ extension RSVPViewController: UISearchResultsUpdating {
         for i in tableArray{
             copy.append(i.clone(in: context, exludeEntities: nil)!)
         }
-        if (context?.hasChanges)!{
-            print("meron1")
-        }
-        else{
-            print("wala1")
-        }
+        
         
         for case let i as Table in copy{
             
@@ -380,12 +407,7 @@ extension RSVPViewController: UISearchResultsUpdating {
             if (newTable.guests?.count)! > 0{
                 filteredTableData.append(newTable)
             }
-            if (context?.hasChanges)!{
-                print("meron2")
-            }
-            else{
-                print("wala2")
-            }
+        
             
         }
         
