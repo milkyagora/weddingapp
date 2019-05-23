@@ -189,17 +189,23 @@ extension RSVPViewController {
                                 let fetchError = error as NSError
                                 print(fetchError)
                             }
-                            
+                           
                             if resultsArr.count > 0 {
                                 for x in resultsArr {
                                     if x.name == guestCopy.name &&  x.table?.name == guestCopy.table?.name{
+                                        let guest = Guest(context: context!)
+                                        guest.name = guestCopy.name
+                                        guest.hasArrived = true
+                                        x.table?.addToGuests(guest)
                                         context?.delete(x)
+                                        
                                     }
                                 }
                             }
                             
-
                             
+                            
+                 
                             
                             
                         }
@@ -212,8 +218,7 @@ extension RSVPViewController {
                             do {
                                 if self.resultSearchController.isActive{
                                     //context?.delete((context?.object(with: guestCopy.objectID))!)
-                                   
-                                    try childContext.save()
+//                                    try childContext.save()
                                     try context?.save()
                                     
                                 }
