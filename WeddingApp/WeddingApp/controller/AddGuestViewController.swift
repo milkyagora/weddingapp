@@ -34,6 +34,8 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
 //        let dismissViewTap = UITapGestureRecognizer(target: self, action: #selector(dismissView))
 //        view.addGestureRecognizer(dismissViewTap)
         
+        view.bringSubview(toFront: tableDropdown)
+        
         updateDropdownData()
         tableDropdown.delegate = self
         guestName.delegate = self

@@ -25,6 +25,7 @@ class RSVPViewController:  UIViewController, ExpyTableViewDelegate {
     @IBOutlet var tableView: ExpyTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        definesPresentationContext = true
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -159,6 +160,7 @@ extension RSVPViewController {
                     self.fetchData()
                     tableView.reloadData()
                     self.updateCounter()
+                    
                    } catch let error as NSError {
                     print("Could not save. \(error), \(error.userInfo)")
                     }
@@ -171,7 +173,10 @@ extension RSVPViewController {
                     
                     
                 }}))
-            self.present(alert, animated: true, completion: nil)
+                
+
+                    self.present(alert, animated: true, completion: nil)
+           
         }
         }
     }
@@ -285,7 +290,7 @@ extension RSVPViewController {
         
         if segue.identifier == "addGuest"{
             if isSearchBarUsed{
-                (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext.reset()
+                //(UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext.reset()
             }
         }
     }
@@ -298,6 +303,12 @@ extension RSVPViewController {
 extension RSVPViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
+        if ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext.hasChanges)!{
+            print("meronbaya")
+        }
+        else{
+            print("walabaya")
+        }
         isSearchBarUsed = true
         filteredTableData.removeAll(keepingCapacity: false)
         var appDelegate =
@@ -310,7 +321,12 @@ extension RSVPViewController: UISearchResultsUpdating {
         for i in tableArray{
             copy.append(i.clone(in: context, exludeEntities: nil)!)
         }
-       
+        if (context?.hasChanges)!{
+            print("meron1")
+        }
+        else{
+            print("wala1")
+        }
        
         for case let i as Table in copy{
 
@@ -326,21 +342,62 @@ extension RSVPViewController: UISearchResultsUpdating {
             if (newTable.guests?.count)! > 0{
                 filteredTableData.append(newTable)
             }
+            if (context?.hasChanges)!{
+                print("meron2")
+            }
+            else{
+                print("wala2")
+            }
             
         }
+        
+       
+
+        
+       
         
         
         if resultSearchController.searchBar.text == ""{
             filteredTableData = tableArray
         }
         
-        self.tableView.reloadData()
-        if self.tableView.numberOfSections > 0{
-            for i in 0...self.tableView.numberOfSections-1{
-                self.tableView.expand(i)
+       
+        
+        let group = DispatchGroup()
+        group.enter()
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            if self.tableView.numberOfSections > 0{
+                for i in 0...self.tableView.numberOfSections-1{
+                    self.tableView.expand(i)
+                }
             }
+            group.leave()
         }
         
+        // does not wait. But the code in notify() gets run
+        // after enter() and leave() calls are balanced
+        
+        group.notify(queue: .main) {
+            if (context?.hasChanges)!{
+                context?.reset()
+                self.fetchData()
+            }
+            else{
+                print("wala")
+            }
+        }
+//        DispatchQueue.main.async {
+//            if (context?.hasChanges)!{
+//              context?.reset()
+//                self.fetchData()
+//            }
+//            else{
+//                print("wala")
+//            }
+//        }
+       
         
     }
     
