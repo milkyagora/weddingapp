@@ -128,7 +128,7 @@
                                 </constraints>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Table No:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcE-ru-Cdy">
                                 <rect key="frame" x="140" y="343.5" width="150" height="22.5"/>
@@ -437,7 +437,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YWs-bv-gLz">
-                                <rect key="frame" x="0.0" y="82" width="768" height="51"/>
+                                <rect key="frame" x="8" y="82" width="752" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="b5t-aE-pEr"/>
                                 </constraints>
@@ -495,8 +495,8 @@
                         <constraints>
                             <constraint firstItem="Kwp-Lh-cf0" firstAttribute="top" secondItem="YWs-bv-gLz" secondAttribute="bottom" constant="5" id="6Kr-4s-h6q"/>
                             <constraint firstItem="o8P-31-Kob" firstAttribute="trailing" secondItem="Kwp-Lh-cf0" secondAttribute="trailing" id="BDN-R1-yyL"/>
-                            <constraint firstItem="YWs-bv-gLz" firstAttribute="leading" secondItem="o8P-31-Kob" secondAttribute="leading" id="XjO-qT-fkq"/>
-                            <constraint firstItem="o8P-31-Kob" firstAttribute="trailing" secondItem="YWs-bv-gLz" secondAttribute="trailing" id="aGU-PO-Tjc"/>
+                            <constraint firstItem="YWs-bv-gLz" firstAttribute="leading" secondItem="o8P-31-Kob" secondAttribute="leading" constant="8" id="XjO-qT-fkq"/>
+                            <constraint firstItem="o8P-31-Kob" firstAttribute="trailing" secondItem="YWs-bv-gLz" secondAttribute="trailing" constant="8" id="aGU-PO-Tjc"/>
                             <constraint firstItem="YWs-bv-gLz" firstAttribute="top" secondItem="o8P-31-Kob" secondAttribute="top" constant="12" id="oWx-xm-dzB"/>
                             <constraint firstItem="Kwp-Lh-cf0" firstAttribute="leading" secondItem="o8P-31-Kob" secondAttribute="leading" id="qHG-Tt-Syp"/>
                             <constraint firstItem="o8P-31-Kob" firstAttribute="bottom" secondItem="Kwp-Lh-cf0" secondAttribute="bottom" id="zqP-cP-UCQ"/>
