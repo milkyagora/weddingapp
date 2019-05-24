@@ -24,6 +24,7 @@ class AddTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboard()
         saveBtn.layer.cornerRadius = 5
         self.view.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         mainView.layer.cornerRadius = 15

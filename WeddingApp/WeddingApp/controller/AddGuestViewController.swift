@@ -30,9 +30,9 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboard()
         saveBtn.layer.cornerRadius = 5
-//        let dismissViewTap = UITapGestureRecognizer(target: self, action: #selector(dismissView))
-//        view.addGestureRecognizer(dismissViewTap)
+
         
         view.bringSubview(toFront: tableDropdown)
         
@@ -42,7 +42,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         statusDropdown.delegate = self
         
         tableDropdown.rowHeight = 35
-        tableDropdown.listHeight = 400
+        tableDropdown.listHeight = 200
         tableDropdown.selectedRowColor = UIColor.lightGray
         tableDropdown.didSelect{(selectedText , index ,id) in
             self.selectedTable = self.tableArray[id] as! Table
@@ -51,7 +51,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
 
         statusDropdown.optionArray = ["Arrived", "Pending"]
         statusDropdown.rowHeight = 35
-        statusDropdown.listHeight = 200
+        statusDropdown.listHeight = 300
         statusDropdown.selectedRowColor = UIColor.lightGray
         statusDropdown.didSelect{(selectedText , index ,id) in
             if (selectedText == "Arrived"){
@@ -60,6 +60,12 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
             else{
                 self.guestStatus = false
             }
+        }
+        statusDropdown.listWillAppear {
+            self.guestName.resignFirstResponder()
+        }
+        tableDropdown.listWillAppear {
+            self.guestName.resignFirstResponder()
         }
         
         if isEdit{
@@ -105,6 +111,7 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         else{
+            
             return true
         }
     }
@@ -141,10 +148,6 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @objc private func dismissView() {
-        view.endEditing(true)
-    }
-
     func addGuest(){
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -205,4 +208,22 @@ class AddGuestViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+}
+
+extension UIViewController
+{
+    func hideKeyboard()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(UIViewController.dismissKeyboard))
+        
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard()
+    {
+        view.endEditing(true)
+    }
 }
